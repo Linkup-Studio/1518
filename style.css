@@ -1,14 +1,19 @@
 /* Reset & Base */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
 
 :root {
-    --primary-color: #C73E3A; /* Akabeni - Deep Red for "Iroha"/"Ichigo" */
-    --secondary-color: #F8F4E6; /* Off-white/Beige for warmth */
-    --accent-color: #D6A485; /* Soft earth tone */
+    --primary-color: #C73E3A;
+    /* Akabeni - Deep Red for "Iroha"/"Ichigo" */
+    --secondary-color: #F8F4E6;
+    /* Off-white/Beige for warmth */
+    --accent-color: #D6A485;
+    /* Soft earth tone */
     --text-color: #333333;
     --light-text: #666666;
     --background: #FFFFFF;
@@ -59,7 +64,7 @@ img {
     left: 0;
     width: 100%;
     background-color: rgba(255, 255, 255, 0.95);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
     z-index: 1000;
 }
 
@@ -85,7 +90,27 @@ img {
     font-size: 0.8rem;
     color: var(--text-color);
     font-weight: 500;
-    margin-top: 2px;
+    margin-top: 4px;
+}
+
+.menu-toggle {
+    display: none;
+    flex-direction: column;
+    justify-content: space-around;
+    width: 30px;
+    height: 25px;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    z-index: 1100;
+}
+
+.menu-toggle span {
+    width: 100%;
+    height: 3px;
+    background-color: var(--primary-color);
+    transition: all 0.3s linear;
+    border-radius: 2px;
 }
 
 .nav ul {
@@ -109,7 +134,8 @@ img {
 /* Mobile Nav (Simple hidden/hamburger logic usually needed, but kept simple for now) */
 @media (max-width: 768px) {
     .nav {
-        display: none; /* For simplicity in this static version, mobile menu not implemented in CSS only without JS */
+        display: none;
+        /* For simplicity in this static version, mobile menu not implemented in CSS only without JS */
     }
 }
 
@@ -122,7 +148,8 @@ img {
     align-items: center;
     justify-content: center;
     overflow: hidden;
-    margin-top: 70px; /* Header height */
+    margin-top: 70px;
+    /* Header height */
 }
 
 .hero-bg {
@@ -185,7 +212,8 @@ img {
     font-size: 0.9rem;
     letter-spacing: 0.1em;
     margin-bottom: 10px;
-    font-family: serif; /* Elegant touch */
+    font-family: serif;
+    /* Elegant touch */
 }
 
 .jp-title {
@@ -224,7 +252,7 @@ img {
 
 .about-image img {
     border-radius: 8px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
 }
 
 .about-text {
@@ -250,7 +278,7 @@ img {
     background: #fff;
     padding: 40px;
     border-radius: 8px;
-    box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
     border-top: 4px solid var(--primary-color);
 }
 
@@ -312,7 +340,7 @@ img {
     text-align: center;
     max-width: 800px;
     margin: 0 auto;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
 }
 
 .contact-title {
@@ -328,7 +356,8 @@ img {
     flex-wrap: wrap;
 }
 
-.tel-box, .fax-box {
+.tel-box,
+.fax-box {
     background: #fbfbfb;
     padding: 30px;
     border-radius: 8px;
@@ -363,54 +392,100 @@ img {
 }
 
 /* Responsive */
+/* Responsive */
 @media (max-width: 768px) {
     .header-inner {
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .logo {
+        padding: 10px 20px;
         align-items: center;
     }
 
-    .nav ul {
-        gap: 15px;
-        flex-wrap: wrap;
+    .menu-toggle {
+        display: flex;
+        /* Show hamburger */
+    }
+
+    .nav {
+        display: block;
+        /* Override default hidden if needed, but we toggle visibility via class */
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 100%;
+        height: 100vh;
+        background-color: rgba(255, 255, 255, 0.98);
+        transition: right 0.3s ease-in-out;
+        z-index: 1050;
+        display: flex;
         justify-content: center;
+        align-items: center;
     }
-    
+
+    .header.nav-open .nav {
+        right: 0;
+    }
+
+    /* Hamburger Animation when open */
+    .header.nav-open .menu-toggle span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 6px);
+    }
+
+    .header.nav-open .menu-toggle span:nth-child(2) {
+        opacity: 0;
+    }
+
+    .header.nav-open .menu-toggle span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -6px);
+    }
+
+    .nav ul {
+        flex-direction: column;
+        gap: 30px;
+        text-align: center;
+    }
+
     .nav a {
-        font-size: 0.8rem;
+        font-size: 1.2rem;
+        display: block;
+        padding: 10px;
     }
-    
+
     .btn-nav {
-        padding: 5px 15px;
+        padding: 15px 40px;
     }
 
     .hero-title {
         font-size: 1.8rem;
     }
-    
+
     .about-wrapper {
         flex-direction: column;
     }
-    
+
     .service-cards {
         flex-direction: column;
     }
-    
+
     .company-info dl {
         flex-direction: column;
         gap: 5px;
     }
-    
+
     .company-info dt {
         width: 100%;
         color: var(--primary-color);
+        margin-bottom: 2px;
     }
-    
+
     .contact-details {
         flex-direction: column;
         gap: 20px;
+    }
+
+    .section {
+        padding: 60px 0;
+    }
+
+    .tel-link {
+        font-size: 1.8rem;
     }
 }

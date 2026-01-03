@@ -1,20 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>合同会社 一期一縁 | 居宅介護支援事業所 ケアプラン彩心</title>
-    <meta name="description" content="愛知県西尾市の合同会社一期一縁が運営する居宅介護支援事業所「ケアプラン彩心（いろは）」。碧南市・高浜市を中心に、ご利用者一人ひとりに寄り添ったケアプランを作成します。">
+    <meta name="description"
+        content="愛知県西尾市の合同会社一期一縁が運営する居宅介護支援事業所「ケアプラン彩心（いろは）」。碧南市・高浜市を中心に、ご利用者一人ひとりに寄り添ったケアプランを作成します。">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Zen+Kaku+Gothic+New:wght@400;500;700&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <header class="header">
+    <header class="header" id="header">
         <div class="header-inner">
             <h1 class="logo">合同会社 一期一縁<span class="sub-logo">居宅介護支援事業所 ケアプラン彩心</span></h1>
-            <nav class="nav">
+            <button class="menu-toggle" id="menu-toggle" aria-label="メニューを開く">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+            <nav class="nav" id="nav">
                 <ul>
                     <li><a href="#philosophy">理念</a></li>
                     <li><a href="#about">彩心について</a></li>
@@ -180,5 +189,18 @@
             <p class="copyright">&copy; 2024 Ichigoichie LLC. All Rights Reserved.</p>
         </div>
     </footer>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function () {
+            document.getElementById('header').classList.toggle('nav-open');
+        });
+
+        // Close menu when link is clicked
+        document.querySelectorAll('.nav a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.getElementById('header').classList.remove('nav-open');
+            });
+        });
+    </script>
 </body>
+
 </html>
